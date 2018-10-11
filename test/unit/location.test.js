@@ -25,7 +25,7 @@ describe('location middleware', () => {
             body: { zip: 97206 }
         };
         
-        const next = err => {
+        const next = err => { /* eslint-disable-next-line */
             console.log(req.weather);
             expect(req.weather.location.city).toEqual('Portland');
             expect(req.weather.location.state).toEqual('OR');
