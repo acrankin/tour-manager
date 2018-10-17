@@ -48,4 +48,15 @@ describe('tour routes', () => {
                 });
             });
     });
+
+    it('gets all tours', () => {
+        return request(app).get('/api/tours')
+            .then(retrievedTours => {
+                createdTours.forEach(createdTour => {
+                    expect(retrievedTours.body).toContainEqual(createdTour);
+                });
+                expect(retrievedTours.body).toHaveLength(createdTours.length);
+            });
+    });
+    
 });
