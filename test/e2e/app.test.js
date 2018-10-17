@@ -4,11 +4,21 @@ const request = require('supertest');
 const app = require('../../lib/app');
 const Tour = require('../../lib/models/Tour');
 const { dropCollection } = require('./db');
+const { createTours } = require('./helpers');
 
 describe('tour routes', () => {
+    let createdTours;
+    
     
     beforeEach(() => {
         return dropCollection('tours');
+    });
+
+    beforeEach(() => {
+        return createTours()
+            .then(toursRes => {
+                createdTours = toursRes;
+            });
     });
 
     it('creates a tour on POST', () => {

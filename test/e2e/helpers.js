@@ -36,4 +36,18 @@ let tours = [
         launchDate: Date.now(),
         stops: []
     }
-]
+];
+
+const createTour = tour => {
+    return request(app).post('/api/tours')
+        .send(tour)
+        .then(res => res.body);
+};
+
+const createTours = () => {
+    return Promise.all(tours.map(createTour));
+};
+
+module.exports = {
+    createTours
+};
