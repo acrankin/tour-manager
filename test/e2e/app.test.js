@@ -60,7 +60,7 @@ describe('tour routes', () => {
     });
 
     it('gets a tour by id', () => {
-        const { id } = createdTours[0]._id;
+        const id = createdTours[0]._id;
         return request(app).get(`/api/tours/${id}`)
             .then(retrievedTour => {
                 expect(retrievedTour.body).toEqual({ ...createdTours[0], __v: expect.any(Number) });
