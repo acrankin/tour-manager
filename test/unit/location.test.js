@@ -26,7 +26,7 @@ describe('location middleware', () => {
         };
         
         const next = err => { /* eslint-disable-next-line */
-            console.log(req.weather);
+            // console.log(req.weather);
             expect(req.weather.location.city).toEqual('Portland');
             expect(req.weather.location.state).toEqual('OR');
             done();

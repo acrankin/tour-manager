@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint .",
     "coverage": "jest --coverage --detectOpenHandles",
-    "jest": "jest --verbose",
+    "jest": "jest",
     "test": "npm run jest",
     "test:watch": "npm run jest -- --watch",
     "start": "nodemon index.js"

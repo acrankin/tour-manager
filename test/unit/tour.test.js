@@ -1,8 +1,5 @@
 const { getErrors } = require('./helpers');
 const Tour = require('../../lib/models/Tour');
-const Chance = require('chance');
-const chance = new Chance();
-
 
 describe('Tour model', () => {
     it('validates a good model', () => {
