@@ -9,7 +9,6 @@ const { createTours } = require('./helpers');
 describe('tour routes', () => {
     let createdTours;
     
-    
     beforeEach(() => {
         return dropCollection('tours');
     });
@@ -63,9 +62,14 @@ describe('tour routes', () => {
         const id = createdTours[0]._id;
         return request(app).get(`/api/tours/${id}`)
             .then(retrievedTour => {
-                expect(retrievedTour.body).toEqual({ ...createdTours[0], __v: expect.any(Number) });
+                expect(retrievedTour.body)
+                    .toEqual({ ...createdTours[0], __v: expect.any(Number) });
             });
-
     });
-    
 });
+
+describe('stops', () => {
+    it('pushes a stop to a tour', () => {
+        
+    })
+})
