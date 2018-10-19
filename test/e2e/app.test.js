@@ -66,10 +66,23 @@ describe('tour routes', () => {
                     .toEqual({ ...createdTours[0], __v: expect.any(Number) });
             });
     });
+
+    describe('stops', () => {
+        it('pushes a stop to a tour', () => {
+            return request(app)
+                .post(`/api/${createdTours[0]}/stops`)
+                .send({ zip: 97206 })
+                .then(res => {
+                    expect(res.body).toEqual({
+                        ...createdTours[0], stops: [{                            
+                            _id: expect.any(String),
+                            location: expect.any(Object),
+                            weather: expect.any(Object)
+                        }]
+                    });
+                });
+        });
+    });
 });
 
-describe('stops', () => {
-    it('pushes a stop to a tour', () => {
-        
-    })
-})
+
