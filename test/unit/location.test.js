@@ -40,10 +40,11 @@ describe('location middleware', () => {
         
         const next = err => { /* eslint-disable-next-line */
             // console.log(req.weather);
-            expect(req.weatherLocation.location.city).toEqual('Portland');
-            expect(req.weatherLocation.location.state).toEqual('OR');
+            expect(req.stop.location.city).toEqual('Portland');
+            expect(req.stop.location.state).toEqual('OR');
             done();
         };
+
         location(req, null, next);
     });
 });

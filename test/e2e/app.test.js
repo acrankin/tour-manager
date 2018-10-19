@@ -2,7 +2,6 @@ require('dotenv').config();
 require('../../lib/util/connect')();
 const request = require('supertest');
 const app = require('../../lib/app');
-const Tour = require('../../lib/models/Tour');
 const { dropCollection } = require('./db');
 const { createTours } = require('./helpers');
 
@@ -70,16 +69,20 @@ describe('tour routes', () => {
     describe('stops', () => {
         it('pushes a stop to a tour', () => {
             return request(app)
-                .post(`/api/${createdTours[0]}/stops`)
+                .post(`/api/tours/${createdTours[0]._id}/stops`)
                 .send({ zip: 97206 })
                 .then(res => {
-                    expect(res.body).toEqual({
-                        ...createdTours[0], stops: [{                            
+                    expect(res.body.stops).toEqual(
+                        [{                            
                             _id: expect.any(String),
-                            location: expect.any(Object),
+                            location: {
+                                city: 'Portland',
+                                state: 'OR',
+                                zip: 97206
+                            },
                             weather: expect.any(Object)
                         }]
-                    });
+                    );
                 });
         });
     });
